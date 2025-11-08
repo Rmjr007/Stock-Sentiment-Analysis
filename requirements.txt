@@ -1,20 +1,9 @@
-# Web app framework
 streamlit==1.40.0
-
-# Data handling and analysis
 pandas==2.2.2
 numpy==1.26.4
-
-# Visualization
 matplotlib==3.9.2
-
-# Web scraping
 requests==2.32.3
 beautifulsoup4==4.12.3
 lxml==5.3.0
-
-# Finance data
 yfinance==0.2.43
-
-# NLP and sentiment analysis
 nltk==3.9.1
