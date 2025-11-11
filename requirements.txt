@@ -1,0 +1,10 @@
+flask
+gunicorn
+pandas
+numpy
+matplotlib
+requests
+beautifulsoup4
+yfinance
+nltk
+scikit-learn
