@@ -14,6 +14,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 import io
 import base64
+from datetime import datetime  # <--- Added this import
 
 from flask import Flask, request, render_template_string
 
@@ -73,6 +74,14 @@ def fetch_headlines(ticker):
 
     df_news = pd.DataFrame(data)
     df_news['Date'] = df_news['Date'].fillna(method='ffill')
+
+    # --- FIX START: Handle "Today" in date column ---
+    # Get current date in the format Finviz uses (e.g., 'Dec-08-25')
+    current_date_str = datetime.now().strftime("%b-%d-%y")
+    # Replace 'Today' with the actual date string
+    df_news['Date'] = df_news['Date'].apply(lambda x: current_date_str if x == 'Today' else x)
+    # --- FIX END ---
+
     df_news['Date'] = pd.to_datetime(df_news['Date'], format='%b-%d-%y').dt.date
     return df_news
 
